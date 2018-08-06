@@ -16,7 +16,9 @@
 
             </el-main>
             <el-footer>
-                <h1>本站资源抓取自互联网，仅供学习交流使用</h1>
+                <h4>本站资源抓取自互联网，仅供学习交流使用<br>
+                    <router-link to="/about/Disclaimer">免责声明</router-link>
+                </h4>
             </el-footer>
         </el-container>
 
@@ -112,6 +114,8 @@
 
     .el-footer {
         text-align: center;
+        margin-top: -20px;
+        margin-bottom: 20px;
     }
 
     .el-main {
