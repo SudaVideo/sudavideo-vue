@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import VideoDetail from '../views/VideoDetail.vue'
 import VideoList from '../components/VideoList.vue'
+import Disclaimer from '../views/Disclaimer.vue'
 
 
 Vue.use(Router)
@@ -11,8 +12,8 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'home',
             component: Home,
+            name: 'Home',
             meta: {
                 title: 'SudaVideo',
                 keepAlive: true
@@ -20,8 +21,8 @@ export default new Router({
         },
         {
             path: '/:playType',
-            name: 'home',
             component: Home,
+            name: 'Home',
             meta: {
                 title: 'SudaVideo',
                 keepAlive: true
@@ -30,8 +31,8 @@ export default new Router({
         },
         {
             path: '/videoDetail/:source/:videoId',
-            name: '详情',
             component: VideoDetail,
+            name: 'VideoDetail',
             props: true,
             meta: {
                 title: '详情'
@@ -39,17 +40,8 @@ export default new Router({
         },
         {
             path: '/videoDetail/:source/:videoId/:seriesId',
-            name: '详情',
             component: VideoDetail,
-            props: true,
-            meta: {
-                title: '详情'
-            }
-        },
-        {
-            path: '/videoDetail/:videoId/:seriesId',
-            name: '详情',
-            component: VideoDetail,
+            name: 'VideoDetail',
             props: true,
             meta: {
                 title: '详情'
@@ -57,11 +49,19 @@ export default new Router({
         },
         {
             path: '/VideoList/:playType/',
-            name: '详情',
             component: VideoList,
+            name: 'VideoList',
             props: true,
             meta: {
                 title: '分类'
+            }
+        },
+        {
+            path: '/about/Disclaimer',
+            name: 'Disclaimer',
+            component: Disclaimer,
+            meta: {
+                title: '免责声明'
             }
         }
 
