@@ -18,6 +18,8 @@
             <el-footer>
                 <h4>本站资源抓取自互联网，仅供学习交流使用<br>
                     <router-link to="/about/Disclaimer">免责声明</router-link>
+                    &nbsp;
+                    <a href="https://sudavideo.site/#/">新站点</a>
                 </h4>
             </el-footer>
         </el-container>
