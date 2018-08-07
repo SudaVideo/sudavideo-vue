@@ -8,10 +8,17 @@
                         <h1>已经到头了</h1>
                     </div>
 
-                    <el-col v-for="video in videos" :sm="4" :xs="8" :lg="2" :key="video.videoId"
+                    <el-col v-for="video in videos" :xs="8" :sm="4" :lg="2" :key="video.videoId"
                             style="margin-bottom: 0.3vw">
                         <el-card :body-style="{ padding: '0px' }">
-                            <img v-lazy="video.thumb" class="image" @click="goDetail(video)">
+                            <!-- 动漫图片特殊处理 -->
+                            <img v-lazy="video.thumb" class="image"
+                                 v-bind:class="{
+                                 imageCartoonXs: source==4 && screenWidth<768,
+                                 imageCartoonSm: source==4 && screenWidth>=768  && screenWidth< 1200,
+                                 imageCartoonLg: source==4 && screenWidth>=1200
+                                 }"
+                                 @click="goDetail(video)">
                             <div style="padding: 4px;">
                                 <span class="title">{{video.title}}</span>
                             </div>
@@ -47,6 +54,7 @@
                 videos: [],
                 loading: true,
                 pageSize: 0,
+                screenWidth: document.body.clientWidth
             };
         },
         methods: {
@@ -68,6 +76,11 @@
         },
         mounted() {
             this.getVideo(1);
+            window.onresize = () => {
+                return (() => {
+                    this.screenWidth = document.body.clientWidth
+                })()
+            }
         }
     }
 </script>
@@ -94,6 +107,18 @@
     .image {
         width: 100%;
         display: block;
+    }
+
+    .imageCartoonXs {
+        height: 15vw;
+    }
+
+    .imageCartoonSm {
+        height: 10vw;
+    }
+
+    .imageCartoonLg {
+        height: 5vw;
     }
 
     .clearfix:before,
