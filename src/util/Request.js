@@ -1,9 +1,7 @@
 import axios from 'axios'
 
 const service = axios.create({
-    // baseURL: "http://localhost:8080/video/", // api的base_url
-    baseURL: "http://74.120.171.77/video/", // api的base_url
-    // baseURL: "https://sudamod.download/video/", // api的base_url
+    baseURL: window.apiUrl, // api的base_url
     timeout: 10000 // request timeout
 })
 

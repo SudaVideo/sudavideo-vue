@@ -8,7 +8,7 @@
                         <h1>已经到头了</h1>
                     </div>
 
-                    <el-col v-for="video in videos" :xs="8" :sm="4" :lg="2" :key="video.videoId"
+                    <el-col v-for="video in videos" :xs="source==4 ?12: 8" :sm="4" :lg="2" :key="video.videoId"
                             style="margin-bottom: 0.3vw">
                         <el-card :body-style="{ padding: '0px' }">
                             <!-- 动漫图片特殊处理 -->
@@ -32,6 +32,7 @@
                 <el-pagination @current-change="handleChange"
                                background
                                small
+                               pager-count="5"
                                layout="prev,pager, next"
                                :page-count=pageSize>
                 </el-pagination>
@@ -110,7 +111,7 @@
     }
 
     .imageCartoonXs {
-        height: 15vw;
+        height: 20vw;
     }
 
     .imageCartoonSm {

@@ -48,7 +48,7 @@ export default new Router({
             }
         },
         {
-            path: '/VideoList/:playType/',
+            path: '/VideoList/:source/:playType',
             component: VideoList,
             name: 'VideoList',
             props: true,
