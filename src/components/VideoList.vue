@@ -68,7 +68,7 @@
                 });
             },
             goDetail(video) {
-                window.sessionStorage.setItem("current_title", video.title);
+                window.localStorage.setItem("current_title", video.title);
                 this.$router.push("/videoDetail/" + video.source + "/" + video.videoId)
             },
             handleChange(value) {
@@ -108,6 +108,7 @@
     .image {
         width: 100%;
         display: block;
+        cursor: pointer
     }
 
     .imageCartoonXs {

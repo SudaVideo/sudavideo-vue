@@ -16,7 +16,7 @@
                         <d-player v-bind:class="{ videoInit: !startPlay && ballShow}" v-if="!useFrame"
                                   :options="options"
                                   @play="play"
-                                  @canplay="canplay"
+                                  @loadedmetadata="loadedmetadata"
                                   @error="playerror"
                                   ref="player">
                         </d-player>
@@ -26,7 +26,9 @@
                     <el-row :gutter="0">
                         <el-col v-for="video in videoDetail.videoSeries" :sm="colSize" :xs="colSize"
                                 :key="video.seriesId">
-                            <el-button style="margin: 2px" v-bind:key="video.seriesId" type="primary" round
+                            <el-button style="margin: 2px" v-bind:key="video.seriesId"
+                                       :type="seriesId==video.seriesId ?'primary':''"
+                                       round
                                        size="small"
                                        @click="goPlay(video.seriesId)">{{video.name}}
                             </el-button>
@@ -120,7 +122,7 @@
             },
             play() {
             },
-            canplay() {
+            loadedmetadata() {
                 this.startPlay = true;
             },
             playerror() {
@@ -138,8 +140,8 @@
                                 this.getPlayUrl(this.seriesId)
                             } else {
                                 if (res.videoSeries != null && res.videoSeries.length > 0) {
-                                    let seriesId = res.videoSeries[0].seriesId;
-                                    this.getPlayUrl(seriesId)
+                                    this.seriesId = res.videoSeries[0].seriesId;
+                                    this.getPlayUrl(this.seriesId)
                                 }
                             }
                         }
@@ -159,7 +161,7 @@
 
             this.player = this.$refs.player.dp
             this.adjustHeight();
-            document.title = window.sessionStorage.getItem("current_title");
+            document.title = window.localStorage.getItem("current_title");
         },
         created() {
             this.queryVideoDetail();
