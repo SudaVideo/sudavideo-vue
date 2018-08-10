@@ -17,9 +17,11 @@
             </el-main>
             <el-footer>
                 <h4>本站资源抓取自互联网，仅供学习交流使用<br>
-                    <router-link to="/about/Disclaimer">免责声明</router-link>
+                    <router-link style="color: red" to="/about/Disclaimer">免责声明</router-link>
+                    <!--&nbsp;-->
+                    <!--<a href="https://sudavideo.site/#/">新站点</a>-->
                     &nbsp;
-                    <a href="https://sudavideo.site/#/">新站点</a>
+                    <a href="https://github.com/sudavideo">源代码(交流学习)</a>
                 </h4>
             </el-footer>
         </el-container>
@@ -96,7 +98,7 @@
                 }
             },
             handleSelect(item) {
-                window.sessionStorage.setItem("current_title", item.title);
+                window.localStorage.setItem("current_title", item.title);
                 this.$router.push("/videoDetail/" + item.source + "/" + item.videoId)
             },
             showSearchField() {
@@ -107,7 +109,7 @@
                 console.log(tab.name);
             }
         }, activated() {
-            window.sessionStorage.removeItem("current_title")
+            window.localStorage.removeItem("current_title")
         }
     }
 </script>
