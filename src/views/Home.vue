@@ -83,6 +83,12 @@
                     }
                 }
             })
+
+            VideoApi.getSiteInfo().then(res => {
+                if (res) {
+                    document.title = res.siteName;
+                }
+            })
         },
         methods: {
             querySearchAsync(queryString, cb) {
