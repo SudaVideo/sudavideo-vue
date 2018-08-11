@@ -15,7 +15,6 @@ export default new Router({
             component: Home,
             name: 'Home',
             meta: {
-                title: 'SudaVideo',
                 keepAlive: true
             }
         },
@@ -24,7 +23,6 @@ export default new Router({
             component: Home,
             name: 'Home',
             meta: {
-                title: 'SudaVideo',
                 keepAlive: true
             },
             props: true
@@ -64,7 +62,5 @@ export default new Router({
                 title: '免责声明'
             }
         }
-
-
     ]
 })
