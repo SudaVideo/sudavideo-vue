@@ -57,6 +57,13 @@ let VideoApi = {
                 resolve(res.data);
             });
         });
-    }
+    },
+    getSiteInfo() {
+        return new Promise((resolve) => {
+            return service.get("siteInfo").then(res => {
+                resolve(res.data);
+            });
+        });
+    },
 }
 export default VideoApi
