@@ -9,6 +9,7 @@
                 <el-col :sm="12" :xs="24" id="detailContainer">
                     <div v-loading="!startPlay">
                         <iframe v-if="useFrame" style="width: 100%;margin: 0"
+                                allowfullscreen="true" allowtransparency="true"
                                 v-bind:style="{ height: frameHeight + 'px' }"
                                 :src="playUrl"
                                 frameborder="0">
