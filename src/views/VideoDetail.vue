@@ -95,7 +95,7 @@
         methods: {
             goPlay(seriesId) {
                 this.$router.replace("/videoDetail/" + this.source + "/" + this.videoId + "/" + seriesId);
-                this.$router.go(0);
+                window.location.reload();
             },
             getPlayUrl(seriesId) {
                 this.showVideo = false;
@@ -103,7 +103,7 @@
                     url => {
                         //console.log(url)
                         if (url) {
-                            if (url.endsWith("html")) {
+                            if (url.endsWith("html") || url.indexOf("php") > 0) {
                                 this.useFrame = true;
                                 this.playUrl = url;
                                 this.startPlay = true;
@@ -136,6 +136,7 @@
                     res => {
                         if (res != null) {
                             this.videoDetail = res;
+                            console.log(this.seriesId)
                             if (this.seriesId) {
                                 this.getPlayUrl(this.seriesId)
                             } else {
