@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const service = axios.create({
     baseURL: window.apiUrl, // api的base_url
-    timeout: 10000 // request timeout
+    timeout: 15000 // request timeout
 })
 
 service.interceptors.response.use(
