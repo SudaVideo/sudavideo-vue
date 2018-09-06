@@ -101,17 +101,16 @@
             getPlayUrl(seriesId) {
                 this.showVideo = false;
                 VideoApi.getVideoPlayUrl(this.videoId, seriesId, this.source).then(
-                    url => {
-                        //console.log(url)
-                        if (url) {
-                            if (url.endsWith("html") || url.indexOf("php") > 0) {
+                    videoPlay => {
+                        if (videoPlay) {
+                            if (videoPlay.type==="iframe") {
                                 this.useFrame = true;
-                                this.playUrl = url;
+                                this.playUrl = videoPlay.playUrl;
                                 this.startPlay = true;
                             } else {
                                 this.useFrame = false
                                 this.player.switchVideo({
-                                    url: url
+                                    url: videoPlay.playUrl
                                 });
                             }
                             this.showVideo = true;
@@ -137,7 +136,6 @@
                     res => {
                         if (res != null) {
                             this.videoDetail = res;
-                            console.log(this.seriesId)
                             if (this.seriesId) {
                                 this.getPlayUrl(this.seriesId)
                             } else {
